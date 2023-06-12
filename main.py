@@ -10,14 +10,19 @@ import uvicorn
 app = FastAPI(debug=True)  # Create a new FastAPI app instance
 
 # Define an Enum class to represent the possible categories for an item
+
+
 class BeanQuality(str, Enum):
     good = "good"
     bad = "bad"
 
+
 # Load the pre-trained model
-new_model = tf.keras.models.load_model('model_bean_condition.h5')
+new_model = tf.keras.models.load_model('Models/model_bean_condition.h5')
 
 # Define the predict endpoint
+
+
 @app.post("/predict", response_model=BeanQuality)
 async def predict(file: UploadFile = File(..., description="Image file to predict")):
     def preprocess_image(image):
@@ -34,13 +39,14 @@ async def predict(file: UploadFile = File(..., description="Image file to predic
 
         # Load and display the image
         plt.imshow(image)
-        plt.title(f"Predicted: {'bad' if predicted_label == 0 else 'good'} bean")
+        plt.title(
+            f"Predicted: {'bad' if predicted_label == 0 else 'good'} bean")
         plt.axis('off')
         plt.show()
 
         if predicted_label == 0:
             return BeanQuality.bad
-        else :
+        else:
             return BeanQuality.good
 
     # Read the image file
