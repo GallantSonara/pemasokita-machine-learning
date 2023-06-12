@@ -5,7 +5,6 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from starlette.responses import StreamingResponse
-import uvicorn
 
 app = FastAPI(debug=True)  # Create a new FastAPI app instance
 
