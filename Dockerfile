@@ -1,5 +1,7 @@
 FROM python:3.10.10
 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 WORKDIR /app
 
 ENV PIP_ROOT_USER_ACTION=ignore
