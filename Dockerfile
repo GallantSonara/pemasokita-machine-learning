@@ -1,7 +1,5 @@
 FROM python:3.10.10
 
-RUN apt-get update && apt-get install -y libgl1-mesa-glx
-
 WORKDIR /app
 
 ENV PIP_ROOT_USER_ACTION=ignore
@@ -16,10 +14,9 @@ COPY . .
 
 EXPOSE 8080
 
-# ENV PYTHONUNBUFFERED=1
-ENV HOST 0.0.0.0
+ENV PYTHONUNBUFFERED=1
 
-CMD ["python", "main.py"]
+# CMD ["python", "main.py"]
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--PORT", "8080"]
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--PORT", "80"]
