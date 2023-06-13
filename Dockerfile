@@ -14,11 +14,11 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 80
 
 ENV PYTHONUNBUFFERED=1
 
 CMD ["python", "main.py"]
 
 # CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--PORT", "8080"]
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--PORT", "8080"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--PORT", "80"]
